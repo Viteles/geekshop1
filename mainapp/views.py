@@ -11,3 +11,4 @@ def products(request):
 
 def contacts(request):
     return render(request, 'mainapp/contacts.html')
+#чисто для комитапше
