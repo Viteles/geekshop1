@@ -1,0 +1,17 @@
+{% extends 'mainapp/base.html' %}
+{% block title %}
+    <title>Главная</title>
+{% endblock %}
+{% block content %}
+{% include 'mainapp/includes/inc_menu.html' %}
+
+{%if user.name == 'ivan'%}
+    <div>{{user.name|title}}</div>
+{% endif %}
+    <ul>
+        {%for number in arr %}
+            <li>{{number}}</li>
+        {%endfor%}
+    </ul>
+    <h1 class="test-class">Главная</h1>
+{% endblock %}
