@@ -1,8 +1,9 @@
 from django.shortcuts import render
-
+from .models import Product
 
 def main(request):
-    return render(request, 'mainapp/index.html', context={'user':{'name' : 'ivan', 'surname': 'Ivanov'}, 'arr': [1, 2, 3, 4, 5]})
+    product_list = Product.objects.all()
+    return render(request, 'mainapp/index.html', context={'user': request.user , 'products': product_list})
 
 
 def products(request):
@@ -11,4 +12,4 @@ def products(request):
 
 def contacts(request):
     return render(request, 'mainapp/contacts.html')
-#чисто для комитапше
+
