@@ -5,12 +5,15 @@
 {% block content %}
 {% include 'mainapp/includes/inc_menu.html' %}
 
-{%if user.name == 'ivan'%}
-    <div>{{user.name|title}}</div>
+{% if user.is_authenticated %}
+    <div>{{user.username|title}}</div>
+    <a href="{% url 'auth:logout' %}">Выход</a>
+{% else %}
+    <a href="{% url 'auth:login' %}">Войдите</a> или <a href="{% url 'auth:register' %}">зарегестрируйте</a>
 {% endif %}
     <ul>
-        {%for number in arr %}
-            <li>{{number}}</li>
+        {%for product in products%}
+            <li>{{product.name}} ({{ product.category }})</li>
         {%endfor%}
     </ul>
     <h1 class="test-class">Главная</h1>
