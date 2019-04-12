@@ -1,12 +1,21 @@
+<a href="{% url 'main' %}" class="logo"></a>
 <ul class="menu">
 
     <li><a class="{% if request.resolver_match.view_name == 'main' %}
                         active
                       {% endif %}" href="{% url 'main' %}">домой</a></li>
-    <li><a class="{% if request.resolver_match.view_name == 'products:index' %}
-                        active
-                      {% endif %}" href="{% url 'products:index' %}">продукты</a></li>
+    <li><a href="{% url 'products:index' %}" class="{% if request.resolver_match.namespace == 'products' %}
+              active
+            {% endif %}">продукты</a></li>
     <li><a class="{% if request.resolver_match.view_name == 'contacts' %}
                         active
                       {% endif %}" href="{% url 'contacts' %}">контакты</a></li>
 </ul>
+
+</ul>
+<a href="#" class="search"></a>
+<a href="{% url 'basket:view' %}" class="basket">
+    <span>
+        {% if basket %} {{ basket|length }} {% endif %}
+    </span>
+</a>
