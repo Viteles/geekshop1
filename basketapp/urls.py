@@ -8,4 +8,5 @@ urlpatterns = [
     url(r'^$', basketapp.basket, name='view'),
     url(r'add/(?P<pk>\d+)/$', basketapp.basket_add, name='add'),
     url('remove/(?P<pk>\d+)/$', basketapp.basket_remove, name='remove'),
+    url('edit/(?P<pk>\d+)/$', basketapp.basket_edit, name='edit'),
 ]
