@@ -28,6 +28,7 @@ urlpatterns = [
     url(r'^products/', include('mainapp.urls', namespace='products')),
     url(r'^contacts/', mainapp.contacts, name='contacts'),
     url(r'^basket/', include('basketapp.urls', namespace='basket')),
+    url(r'^admin_custom/', include('adminapp.urls', namespace='admin_custom')),
     url(r'^admin/', admin.site.urls),
 ]
 if settings.DEBUG:

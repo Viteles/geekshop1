@@ -1,24 +1,28 @@
-<a href="{% url 'main' %}" class="logo"></a>
-<ul class="menu">
-
-    <li><a class="{% if request.resolver_match.view_name == 'main' %}
-                        active
-                      {% endif %}" href="{% url 'main' %}">домой</a></li>
-    <li><a href="{% url 'products:index' %}" class="{% if request.resolver_match.namespace == 'products' %}
-              active
-            {% endif %}">продукты</a></li>
-    <li><a class="{% if request.resolver_match.view_name == 'contacts' %}
-                        active
-                      {% endif %}" href="{% url 'contacts' %}">контакты</a></li>
-</ul>
-
-</ul>
-<a href="{% url 'basket:view' %}" class="basket">
-  <span>
-    {% if basket %}
-      {{ basket.0.total_cost|floatformat:0 }} руб
-      ({{ basket.0.total_quantity }} шт)
+<div class="menu">
+    <a class="{% if request.resolver_match.url_name == 'main' %}
+    menu-item active
+    {% else %}
+    menu-item
+    {% endif %}" href="{% url 'main' %}">домой</a>
+    <a class="{% if request.resolver_match.url_name == 'products' %}
+    menu-item active
+    {% else %}
+    menu-item
+    {% endif %}" href="{% url 'products:index' %}">продукты</a>
+    <a class="{% if request.resolver_match.url_name == 'contacts' %}
+    menu-item active
+    {% else %}
+    menu-item
+    {% endif %}" href="{% url 'contacts' %}">контакты</a>
+    {% if request.user.is_superuser %}
+    <a href="{% url 'admin_custom:categories' %}">админка</a>
     {% endif %}
-  </span>
-</a>
 
+    <a href="{% url 'basket:view' %}" class="basket">
+      <span>
+        {% if basket %}
+          {{ basket.total_cost|floatformat:0 }} руб
+          ({{ basket.total_quantity }} шт)
+        {% endif %}
+      </span>
+    </a>
