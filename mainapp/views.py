@@ -1,7 +1,6 @@
 from django.shortcuts import render, get_object_or_404
 from .models import Product, ProductCategory
 
-
 def get_hot_product():
     return Product.objects.all().first()
 
