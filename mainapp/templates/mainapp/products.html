@@ -1,9 +1,19 @@
 {% extends 'mainapp/base.html' %}
 {% block title %}
-<title>Продукты</title>
+    <title>Продукты</title>
 {% endblock %}
-href="{% url link.href %}"
+
 {% block content %}
     {% include 'mainapp/includes/inc_menu.html' %}
-<h1>Продукты</h1>
+
+    {% include 'mainapp/includes/inc_categories_menu.html' %}
+    <h1>Продукты</h1>
+    {% for product in same_products %}
+        <div>{{ product.name }}({{ product.category.name }})</div>
+        {% if  product.image %}
+            <img src="{{ product.image.url }}" alt="">
+
+        {% endif %}
+    {% endfor %}
+
 {% endblock %}
