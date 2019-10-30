@@ -32,7 +32,7 @@ urlpatterns = [
     url(r'^admin_custom/', include('adminapp.urls', namespace='admin_custom')),
     url(r'^admin/', admin.site.urls),
     url(r'^__debug__/', include(debug_toolbar.urls)),
-    url('^social/', include('social_django.urls', namespace='social')),
+    url(r'^social/', include('social_django.urls', namespace='social')),
 ]
 
 if settings.DEBUG:
