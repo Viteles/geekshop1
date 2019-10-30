@@ -25,7 +25,6 @@ class ProductCategoryListView(IsSuperUserView, ListView):
     # def dispatch(self, request, *args, **kwargs):
     #     super(ProductCategoryListView, self).dispatch(self, request, *args, **kwargs)
 
-
 class ProductCategoryCreateView(CreateView):
     model = ProductCategory
     template_name = 'adminapp/category_update.html'
@@ -101,7 +100,7 @@ class ShopUserUpdateView(UpdateView):
 
 class ShopUserDeleteView(DeleteView):
     model = ShopUser
-    template_name = 'adminapp/user_delete.html'
+    template_name = 'adminapp/user_update.html'
     success_url = reverse_lazy('admin_custom:users')
 
     def get_context_data(self, **kwargs):
